@@ -44,7 +44,7 @@
       Category::updateFile();
     }
 
-    public function updateFile()
+    public static function updateFile()
     {
       $categories = Category::listAll();
       $html = [];
