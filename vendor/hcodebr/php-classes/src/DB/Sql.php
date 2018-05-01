@@ -39,7 +39,6 @@ class Sql {
 		$statement->bindParam($key, $value);
 
 	}
-
 	// Só executa um comando
 	public function query($rawQuery, $params = array())
 	{
@@ -51,7 +50,7 @@ class Sql {
 		$stmt->execute();
 
 	}
-	// Executa e traz uma resposta
+// Executa e traz uma resposta
 	public function select($rawQuery, $params = array()):array
 	{
 

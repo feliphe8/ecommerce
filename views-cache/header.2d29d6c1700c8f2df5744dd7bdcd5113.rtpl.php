@@ -8,18 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hcode Store</title>
-
+    
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-
+    
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/res/site/css/bootstrap.min.css">
-
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/res/site/css/font-awesome.min.css">
-
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/res/site/css/owl.carousel.css">
     <link rel="stylesheet" href="/res/site/css/style.css">
@@ -33,21 +33,29 @@
     <![endif]-->
   </head>
   <body>
-
+   
     <div class="header-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> Minha Conta</a></li>
+                            <li><a href="/profile"><i class="fa fa-user"></i> Minha Conta</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> Lista de Desejos</a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i> Meu Carrinho</a></li>
-                            <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Meu Carrinho</a></li>
+                            <?php if( checkLogin(false) ){ ?>
+
+                            <li><a href="/profile"><i class="fa fa-user"></i> <?php echo getUserName(); ?></a></li>
+                            <li><a href="/logout"><i class="fa fa-close"></i> Sair</a></li>
+                            <?php }else{ ?>
+
+                            <li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+                            <?php } ?>
+
                         </ul>
                     </div>
                 </div>
-
+                
                 <div class="col-md-4">
                     <div class="header-right">
                         <ul class="list-unstyled list-inline">
@@ -73,7 +81,7 @@
             </div>
         </div>
     </div> <!-- End header area -->
-
+    
     <div class="site-branding-area">
         <div class="container">
             <div class="row">
@@ -82,16 +90,16 @@
                         <h1><a href="/"><img src="/res/site/img/logo.png"></a></h1>
                     </div>
                 </div>
-
+                
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="/cart">Carrinho - <span class="cart-amunt">R$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <a href="/cart">Carrinho - <span class="cart-amunt">R$<?php echo getCartVlSubTotal(); ?></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><?php echo getCartNrQtd(); ?></span></a>
                     </div>
                 </div>
             </div>
         </div>
     </div> <!-- End site branding area -->
-
+    
     <div class="mainmenu-area">
         <div class="container">
             <div class="row">
@@ -102,14 +110,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                </div>
+                </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/">Home</a></li>
                         <li><a href="#">Produtos</a></li>
                         <li><a href="/cart">Carrinho</a></li>
                     </ul>
-                </div>
+                </div>  
             </div>
         </div>
     </div> <!-- End mainmenu area -->
